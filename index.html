@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Title + link preview (what shows when you paste the link in an email / chat) -->
+  <title>A Letter for You</title>
+  <meta name="description" content="Someone has sent you a letter. Break the seal to read it." />
+  <meta property="og:title" content="A Letter for You" />
+  <meta property="og:description" content="Someone has sent you a letter. Break the seal to read it." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#2a1a10" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Homemade+Apple&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  1) ENVELOPE SETTINGS — edit the values in quotes                ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<div id="letter-config" hidden
+     data-seal-initial="J"
+     data-envelope-to="For You"
+     data-kicker="You have received a letter"
+     data-typing-speed="1"
+     data-stamp-seal="true"></div>
+<!-- data-typing-speed: 1 = normal, 2 = twice as fast, 0.5 = slower -->
+<!-- data-stamp-seal:   "true" stamps a small wax seal at the bottom when the letter finishes -->
+
+
+<!-- ╔══════════════════════════════════════════════════════════════════╗
+     ║  2) YOUR LETTER — paste your content between the markers         ║
+     ║     Each paragraph goes inside its own <p> ... </p>              ║
+     ║     Delete any line you don't need (date, P.S., etc.)            ║
+     ╚══════════════════════════════════════════════════════════════════╝ -->
+<template id="letter-source">
+<!-- ▼▼▼ START OF LETTER ▼▼▼ -->
+
+  <p class="date">Montréal, the 26th of September, 2026</p>
+
+  <p class="salutation">My dear [Name],</p>
+
+  <p>This is where the first paragraph of your letter goes. Replace this text with your own words — it will be typed out onto the page, one key at a time, the way letters used to be written.</p>
+
+  <p>Add as many paragraphs as you like. Each one simply needs its own opening and closing paragraph tag, just like this one. Line breaks inside a paragraph are ignored, so you can paste freely.</p>
+
+  <p>If you want a word to stand out, you can wrap it in <em>emphasis</em> or <strong>strong</strong> tags, and they will still be typed out with everything else.</p>
+
+  <p class="closing">With all my love,</p>
+
+  <p class="signature">JD</p>
+
+  <p class="ps">P.S. This is the postscript. Remove this line if you don't need one.</p>
+
+<!-- ▲▲▲ END OF LETTER ▲▲▲ -->
+</template>
+
+
+<!-- ─────────────────── You don't need to edit below this line ─────────────────── -->
+
+<button id="sound-toggle" class="sound-toggle" type="button" aria-pressed="false" aria-label="Turn sound on" title="Sound">
+  <svg class="icon-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 9.5l5 5M21.5 9.5l-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  <svg class="icon-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 8.5a5 5 0 010 7M18.8 6a8.5 8.5 0 010 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+</button>
+
+<section id="intro" class="intro">
+  <p class="intro-kicker" id="intro-kicker"></p>
+
+  <div class="envelope" id="envelope">
+    <div class="env-back"></div>
+    <div class="env-letter"></div>
+    <div class="env-pocket-wrap"><div class="env-pocket"></div></div>
+    <div class="env-flap-wrap"><div class="env-flap"></div></div>
+    <p class="env-to" id="envelope-to"></p>
+
+    <button class="seal" id="seal" type="button" aria-label="Break the seal and open the letter">
+      <span class="seal-half seal-left"><span class="seal-face"><span class="seal-initial"></span></span></span>
+      <span class="seal-half seal-right"><span class="seal-face"><span class="seal-initial"></span></span></span>
+    </button>
+  </div>
+
+  <p class="intro-hint">Break the seal to open</p>
+</section>
+
+<main id="letter-view" class="letter-view" hidden>
+  <article class="paper" id="paper" aria-live="off"></article>
+  <div class="end-controls">
+    <button id="replay" class="text-btn" type="button" hidden>Open it again</button>
+  </div>
+</main>
+
+<button id="skip" class="skip-btn" type="button" hidden>Skip typing &rsaquo;</button>
+
+<script src="script.js"></script>
+</body>
+</html>
